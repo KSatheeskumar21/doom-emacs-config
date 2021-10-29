@@ -1,7 +1,7 @@
 (setq user-full-name "Kishore S"
       user-mail-address "k.sath214@gmail.com")
 
-(setq doom-theme 'doom-dracula)
+(setq doom-theme 'doom-monokai-pro)
 
 (setq doom-font (font-spec :family "JetBrains Mono" :size 14)
       doom-big-font (font-spec :family "JetBrains Mono" :size 20))

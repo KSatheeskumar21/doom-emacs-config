@@ -22,7 +22,7 @@
 * Doom theme
 
 #+begin_src emacs-lisp
-(setq doom-theme 'doom-dracula)
+(setq doom-theme 'doom-monokai-pro)
 #+end_src
 
 * Doom font
