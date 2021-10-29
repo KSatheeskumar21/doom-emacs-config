@@ -1,0 +1,59 @@
+#+title: Emacs Config
+#+author: Kishore S
+#+tags: Emacs, Doom Emacs
+
+* Table of Contents :toc:
+- [[#name-and-email][Name and Email]]
+- [[#doom-theme][Doom theme]]
+- [[#doom-font][Doom font]]
+- [[#org-directory][Org directory]]
+- [[#evil-mode][Evil mode]]
+  - [[#vertical-splits-on-the-right--horizontal-splits-on-the-bottom][Vertical Splits on the right & horizontal splits on the bottom]]
+- [[#dashboard][Dashboard]]
+  - [[#remove-the-keyboard-shortcut-tips-on-startup][Remove the keyboard shortcut tips on startup]]
+
+* Name and Email
+
+#+begin_src emacs-lisp
+(setq user-full-name "Kishore S"
+      user-mail-address "k.sath214@gmail.com")
+#+end_src
+
+* Doom theme
+
+#+begin_src emacs-lisp
+(setq doom-theme 'doom-dracula)
+#+end_src
+
+* Doom font
+
+#+begin_src emacs-lisp
+(setq doom-font (font-spec :family "JetBrains Mono" :size 14)
+      doom-big-font (font-spec :family "JetBrains Mono" :size 20))
+#+end_src
+
+* Org directory
+
+#+begin_src emacs-lisp
+(setq org-directory "~/Projects/Org")
+#+end_src
+
+
+* Evil mode
+
+** Vertical Splits on the right & horizontal splits on the bottom
+
+#+begin_src emacs-lisp
+(setq evil-split-window-below t
+      evil-vsplit-window-right t)
+#+end_src
+
+* Dashboard
+
+
+** Remove the keyboard shortcut tips on startup
+
+#+begin_src emacs-lisp
+;;(setq fancy-splash-image (concat doom-private-dir ""))
+(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+#+end_src
