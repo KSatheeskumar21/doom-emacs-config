@@ -11,5 +11,7 @@
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
 
-;;(setq fancy-splash-image (concat doom-private-dir ""))
+;;(setq fancy-splash-image (concat doom-private-dir "haskell.png"))
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)

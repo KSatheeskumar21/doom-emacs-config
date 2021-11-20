@@ -11,6 +11,7 @@
   - [[#vertical-splits-on-the-right--horizontal-splits-on-the-bottom][Vertical Splits on the right & horizontal splits on the bottom]]
 - [[#dashboard][Dashboard]]
   - [[#remove-the-keyboard-shortcut-tips-on-startup][Remove the keyboard shortcut tips on startup]]
+- [[#all-the-icons-dired][All the Icons Dired]]
 
 * Name and Email
 
@@ -54,6 +55,12 @@
 ** Remove the keyboard shortcut tips on startup
 
 #+begin_src emacs-lisp
-;;(setq fancy-splash-image (concat doom-private-dir ""))
+;;(setq fancy-splash-image (concat doom-private-dir "haskell.png"))
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+#+end_src
+
+* All the Icons Dired
+
+#+begin_src emacs-lisp
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 #+end_src
