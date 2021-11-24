@@ -51,4 +51,4 @@
 (package! all-the-icons-dired)
 (package! org-bullets)
 (package! evil-tutor)
-;(package! ivy-posframe)
+(package! ivy-posframe)

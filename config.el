@@ -17,6 +17,13 @@
 
 (setq doom-fallback-buffer "*dashboard*")
 
+(setq dashboard-startup-banner 'logo)
+(setq dashboard-center-content t)
+(setq dashboard-items '((recents . 5)
+                        (agenda . 5)
+                        (bookmarks . 3)
+                        (projects . 3)))
+
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
@@ -47,21 +54,21 @@
                                                (kbd "g <down>")  'centaur-tabs-forward-group
                                                (kbd "g <up>")    'centaur-tabs-backward-group)
 
-;(setq ivy-posframe-display-functions-alist
-;      '((swiper                     . ivy-posframe-display-at-point)
-;        (complete-symbol            . ivy-posframe-display-at-point)
-;        (counsel-M-x                . ivy-display-function-fallback)
-;        (counsel-esh-history        . ivy-posframe-display-at-window-center)
-;        (counsel-describe-function  . ivy-display-function-fallback)
-;        (counsel-describe-variable  . ivy-display-function-fallback)
-;        (counsel-find-file          . ivy-display-function-fallback)
-;        (counsel-recentf            . ivy-display-function-fallback)
-;        (counsel-register           . ivy-posframe-display-at-frame-bottom-window-center)
-;        (nil                        . ivy-posframe-display))
-;      ivy-posframe-height-alist
-;      '((swiper . 20)
-;        (t . 10)))
-;(ivy-posframe-mode 1) ; 1 enables posframe-mode, 0 disables it.
+(setq ivy-posframe-display-functions-alist
+      '((swiper                     . ivy-posframe-display-at-point)
+        (complete-symbol            . ivy-posframe-display-at-point)
+        (counsel-M-x                . ivy-display-function-fallback)
+        (counsel-esh-history        . ivy-posframe-display-at-window-center)
+        (counsel-describe-function  . ivy-display-function-fallback)
+        (counsel-describe-variable  . ivy-display-function-fallback)
+        (counsel-find-file          . ivy-display-function-fallback)
+        (counsel-recentf            . ivy-display-function-fallback)
+        (counsel-register           . ivy-posframe-display-at-frame-bottom-window-center)
+        (nil                        . ivy-posframe-display))
+      ivy-posframe-height-alist
+      '((swiper . 20)
+        (t . 10)))
+(ivy-posframe-mode 1) ; 1 enables posframe-mode, 0 disables it.
 
-(global-set-key (kbd "M-x") 'helm-M-x)
-(helm-mode 1)
+;(global-set-key (kbd "M-x") 'helm-M-x)
+;(helm-mode 1)
