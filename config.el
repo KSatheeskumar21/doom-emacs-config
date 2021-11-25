@@ -2,7 +2,7 @@
       user-mail-address "k.sath214@gmail.com")
 
 ;;(setq doom-theme 'doom-monokai-pro)
-(setq doom-theme 'doom-palenight)
+(setq doom-theme 'doom-one)
 
 (setq doom-font (font-spec :family "Source Code Pro" :size 14)
       doom-big-font (font-spec :family "Source Code Pro" :size 20))
