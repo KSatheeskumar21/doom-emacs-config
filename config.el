@@ -2,17 +2,25 @@
       user-mail-address "k.sath214@gmail.com")
 
 ;;(setq doom-theme 'doom-monokai-pro)
-(setq doom-theme 'doom-city-lights)
+(setq doom-theme 'doom-palenight)
 
-(setq doom-font (font-spec :family "JetBrains Mono" :size 14)
-      doom-big-font (font-spec :family "JetBrains Mono" :size 20))
+(setq doom-font (font-spec :family "Source Code Pro" :size 14)
+      doom-big-font (font-spec :family "Source Code Pro" :size 20))
+(after! doom-themes
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t))
+(custom-set-faces!
+  '(font-lock-comment-face :slant italic)
+  '(font-lock-keyword-face :slant italic))
+
+(setq org-support-shift-select 'always)
 
 (setq org-directory "~/Projects/Org")
 
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
 
-;;(setq fancy-splash-image (concat doom-private-dir "haskell.png"))
+(setq fancy-splash-image (concat doom-private-dir "fu_hua.jpeg"))
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 
 (setq doom-fallback-buffer "*dashboard*")

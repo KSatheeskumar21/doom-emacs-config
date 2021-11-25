@@ -6,11 +6,12 @@
 - [[#name-and-email][Name and Email]]
 - [[#doom-theme][Doom theme]]
 - [[#doom-font][Doom font]]
+- [[#org-shift-select][Org Shift Select]]
 - [[#org-directory][Org directory]]
 - [[#evil-mode][Evil mode]]
   - [[#vertical-splits-on-the-right--horizontal-splits-on-the-bottom][Vertical Splits on the right & horizontal splits on the bottom]]
 - [[#dashboard][Dashboard]]
-  - [[#remove-the-keyboard-shortcut-tips-on-startup][Remove the keyboard shortcut tips on startup]]
+  - [[#banner-image--remove-the-keyboard-shortcut-tips-on-startup][Banner image + remove the keyboard shortcut tips on startup]]
   - [[#dashboard-in-emacsclient][Dashboard in Emacsclient]]
   - [[#dashboard-startup-banner-and-stuff][Dashboard Startup banner and stuff]]
 - [[#all-the-icons-dired][All the Icons Dired]]
@@ -34,14 +35,26 @@
 
 #+begin_src emacs-lisp
 ;;(setq doom-theme 'doom-monokai-pro)
-(setq doom-theme 'doom-city-lights)
+(setq doom-theme 'doom-palenight)
 #+end_src
 
 * Doom font
 
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "JetBrains Mono" :size 14)
-      doom-big-font (font-spec :family "JetBrains Mono" :size 20))
+(setq doom-font (font-spec :family "Source Code Pro" :size 14)
+      doom-big-font (font-spec :family "Source Code Pro" :size 20))
+(after! doom-themes
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t))
+(custom-set-faces!
+  '(font-lock-comment-face :slant italic)
+  '(font-lock-keyword-face :slant italic))
+#+end_src
+
+* Org Shift Select
+
+#+begin_src emacs-lisp
+(setq org-support-shift-select 'always)
 #+end_src
 
 * Org directory
@@ -63,10 +76,10 @@
 * Dashboard
 
 
-** Remove the keyboard shortcut tips on startup
+** Banner image + remove the keyboard shortcut tips on startup
 
 #+begin_src emacs-lisp
-;;(setq fancy-splash-image (concat doom-private-dir "haskell.png"))
+(setq fancy-splash-image (concat doom-private-dir "fu_hua.jpeg"))
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 #+end_src
 
