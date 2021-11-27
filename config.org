@@ -79,7 +79,7 @@
 ** Banner image + remove the keyboard shortcut tips on startup
 
 #+begin_src emacs-lisp
-(setq fancy-splash-image (concat doom-private-dir "fu_hua.jpeg"))
+;;(setq fancy-splash-image (concat doom-private-dir "fu_hua.jpeg"))
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 #+end_src
 
