@@ -13,6 +13,12 @@
   '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic))
 
+(set-face-attribute 'mode-line nil :font "Source Code Pro-13")
+(setq doom-modeline-height 30
+      doom-modeline-bar-width 5
+      doom-modeline-persp-name t
+      doom-modeline-persp-icon t)
+
 (setq org-support-shift-select 'always)
 
 (setq org-directory "~/Projects/Org")
@@ -20,6 +26,7 @@
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
 
+;;(setq fancy-splash-image (concat doom-private-dir "fu_hua.jpeg"))
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 
 (setq doom-fallback-buffer "*dashboard*")
@@ -79,3 +86,21 @@
 
 ;(global-set-key (kbd "M-x") 'helm-M-x)
 ;(helm-mode 1)
+
+(require 'rust-mode)
+(add-hook 'rust-mode-hook #'lsp
+          (lambda () (setq indent-tabs-mode nil)))
+(setq rust-format-on-save t)
+
+(map! :leader
+      (:prefix ("r" . "Rust")
+       :desc "Rust Run" "r" #'rust-run))
+
+(require 'haskell-mode-autoloads)
+
+(map! :leader
+      (:prefix ("H" . "Haskell")
+       :prefix ("i" . "imports")
+       :desc "Navigate to imports" "n" #'haskell-navigate-imports
+       :desc "Sort imports" "s" #'haskell-sort-imports
+       :desc "Align imports" "a" #'haskell-align-imports))

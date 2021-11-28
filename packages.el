@@ -52,3 +52,6 @@
 (package! org-bullets)
 (package! evil-tutor)
 (package! ivy-posframe)
+(package! rust-mode)
+(package! dmenu)
+(package! haskell-mode)

@@ -6,6 +6,7 @@
 - [[#name-and-email][Name and Email]]
 - [[#doom-theme][Doom theme]]
 - [[#doom-font][Doom font]]
+- [[#doom-modeline][Doom Modeline]]
 - [[#org-shift-select][Org Shift Select]]
 - [[#org-directory][Org directory]]
 - [[#evil-mode][Evil mode]]
@@ -23,6 +24,9 @@
   - [[#basic-setup][Basic setup]]
 - [[#ivy-completion][Ivy completion]]
 - [[#helm-completion][Helm completion]]
+- [[#programming-languages][Programming Languages]]
+  - [[#rust-mode][Rust-mode]]
+  - [[#haskell-mode][Haskell-mode]]
 
 * Name and Email
 
@@ -49,6 +53,16 @@
 (custom-set-faces!
   '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic))
+#+end_src
+
+* Doom Modeline
+
+#+begin_src emacs-lisp
+(set-face-attribute 'mode-line nil :font "Source Code Pro-13")
+(setq doom-modeline-height 30
+      doom-modeline-bar-width 5
+      doom-modeline-persp-name t
+      doom-modeline-persp-icon t)
 #+end_src
 
 * Org Shift Select
@@ -179,4 +193,41 @@
 #+begin_src emacs-lisp
 ;(global-set-key (kbd "M-x") 'helm-M-x)
 ;(helm-mode 1)
+#+end_src
+
+* Programming Languages
+
+** Rust-mode
+
+#+begin_src emacs-lisp
+(require 'rust-mode)
+(add-hook 'rust-mode-hook #'lsp
+          (lambda () (setq indent-tabs-mode nil)))
+(setq rust-format-on-save t)
+
+#+end_src
+
+*** Keybindings
+
+#+begin_src emacs-lisp
+(map! :leader
+      (:prefix ("r" . "Rust")
+       :desc "Rust Run" "r" #'rust-run))
+#+end_src
+
+** Haskell-mode
+
+#+begin_src emacs-lisp
+(require 'haskell-mode-autoloads)
+#+end_src
+
+*** Keybindings
+
+#+begin_src emacs-lisp
+(map! :leader
+      (:prefix ("H" . "Haskell")
+       :prefix ("i" . "imports")
+       :desc "Navigate to imports" "n" #'haskell-navigate-imports
+       :desc "Sort imports" "s" #'haskell-sort-imports
+       :desc "Align imports" "a" #'haskell-align-imports))
 #+end_src
