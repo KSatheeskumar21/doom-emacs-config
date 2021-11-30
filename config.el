@@ -26,7 +26,7 @@
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
 
-(setq fancy-splash-image (concat doom-private-dir "fu_hua.jpeg"))
+(setq fancy-splash-image (concat doom-private-dir "link.jpg"))
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 
 (setq doom-fallback-buffer "*dashboard*")
