@@ -55,3 +55,4 @@
 (package! rust-mode)
 (package! dmenu)
 (package! haskell-mode)
+(package! dashboard)

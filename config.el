@@ -26,17 +26,28 @@
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
 
-(setq fancy-splash-image (concat doom-private-dir "link.jpg"))
-(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
+;;(setq fancy-splash-image (concat doom-private-dir "link.jpg"))
+;;(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 
 (setq doom-fallback-buffer "*dashboard*")
+(setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 
-(setq dashboard-startup-banner 'logo)
-(setq dashboard-center-content t)
-(setq dashboard-items '((recents . 5)
-                        (agenda . 5)
-                        (bookmarks . 3)
-                        (projects . 3)))
+(use-package dashboard
+  :init
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-banner-logo-title "I have spent way too much time procrastinating")
+  ;;(setq dashboard-startup-banner 'logo)
+  (setq dashboard-startup-banner "~/.doom.d/emacs-dash.png")
+  (setq dashboard-center-content nil)
+  (setq dashboard-recent-items '((recents . 5)
+                                 (agenda . 5)
+                                 (bookmarks . 5)
+                                 (projects . 5)))
+  :config
+  (dashboard-setup-startup-hook)
+  (dashboard-modify-heading-icons '((recents . "file-text")
+                                    (bookmarks . "book"))))
 
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
