@@ -27,6 +27,7 @@
 - [[#programming-languages][Programming Languages]]
   - [[#rust-mode][Rust-mode]]
   - [[#haskell-mode][Haskell-mode]]
+- [[#rainbow-mode][Rainbow mode]]
 
 * Name and Email
 
@@ -240,4 +241,12 @@
        :desc "Navigate to imports" "n" #'haskell-navigate-imports
        :desc "Sort imports" "s" #'haskell-sort-imports
        :desc "Align imports" "a" #'haskell-align-imports))
+#+end_src
+
+* Rainbow mode
+
+#+begin_src emacs-lisp
+(define-globalized-minor-mode global-rainbow-mode rainbow-mode
+  (lambda () (rainbow-mode 1)))
+(global-rainbow-mode 1)
 #+end_src

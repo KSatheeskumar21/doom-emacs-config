@@ -56,3 +56,4 @@
 ;;(package! dmenu)
 (package! haskell-mode)
 (package! dashboard)
+(package! rainbow-mode)

@@ -115,3 +115,7 @@
        :desc "Navigate to imports" "n" #'haskell-navigate-imports
        :desc "Sort imports" "s" #'haskell-sort-imports
        :desc "Align imports" "a" #'haskell-align-imports))
+
+(define-globalized-minor-mode global-rainbow-mode rainbow-mode
+  (lambda () (rainbow-mode 1)))
+(global-rainbow-mode 1)
