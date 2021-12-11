@@ -1,11 +1,11 @@
 (setq user-full-name "Kishore S"
       user-mail-address "k.sath214@gmail.com")
 
-;;(setq doom-theme 'doom-monokai-pro)
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-monokai-pro)
+;;(setq doom-theme 'doom-one)
 
-(setq doom-font (font-spec :family "Source Code Pro" :size 14)
-      doom-big-font (font-spec :family "Source Code Pro" :size 20))
+(setq doom-font (font-spec :family "JetBrains Mono" :size 14)
+      doom-big-font (font-spec :family "JetBrains Mono" :size 20))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
