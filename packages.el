@@ -57,3 +57,4 @@
 (package! haskell-mode)
 (package! dashboard)
 (package! rainbow-mode)
+(package! autothemer)

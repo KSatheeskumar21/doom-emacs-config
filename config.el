@@ -1,8 +1,17 @@
 (setq user-full-name "Kishore S"
       user-mail-address "k.sath214@gmail.com")
 
-(setq doom-theme 'doom-monokai-pro)
-;;(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-one)
+
+(use-package autothemer :ensure t)
+
+(straight-use-package
+ '(rose-pine-emacs
+   :host github
+   :repo "thongpv87/rose-pine-emacs"
+   :branch "master"))
+;;(load-theme 'rose-pine-moon t)
+;;(setq doom-theme 'rose-pine-moon)
 
 (setq doom-font (font-spec :family "JetBrains Mono" :size 14)
       doom-big-font (font-spec :family "JetBrains Mono" :size 20))
@@ -18,10 +27,6 @@
       doom-modeline-bar-width 5
       doom-modeline-persp-name t
       doom-modeline-persp-icon t)
-
-(setq org-support-shift-select 'always)
-
-(setq org-directory "~/Projects/Org")
 
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
@@ -63,6 +68,21 @@
        :desc "Org Tangle" "t" #'org-babel-tangle
        :desc "Org Detangle" "d" #'org-babel-detangle
        :desc "Org Results" "r" #'org-babel-open-src-block-result))
+
+(after! org
+       (setq org-support-shift-select 'always)
+       (setq org-directory "~/Projects/Org"
+             org-agenda-files '("~/Projects/Org/agenda.org")
+             org-default-notes-file (expand-file-name "notes.org" org-directory)
+             org-todo-keywords
+             '((sequence
+                "TODO (t)"
+                "PROJ (p)"
+                "SCHL (s)"
+                "WAIT (w)"
+                "|"
+                "DONE (d)"
+                "CANCELLED (c)"))))
 
 ;;(setq centaur-tabs-set-bar 'over
 ;;      centaur-tabs-set-icons t
