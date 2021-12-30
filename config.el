@@ -1,20 +1,20 @@
 (setq user-full-name "Kishore S"
       user-mail-address "k.sath214@gmail.com")
 
-(setq doom-theme 'doom-one)
+(use-package doom-themes
+  :ensure nil
+  :config
+  (setq doom-themes-enable-bold t
+        doom-themes-enable-italic t)
+  (setq doom-theme 'doom-tokyo-night)
+  (doom-themes-visual-bell-config)
+  (doom-themes-neotree-config)
+  (setq doom-themes-treemacs-theme "doom-atom")
+  (doom-themes-treemacs-config)
+  (doom-themes-org-config))
 
-(use-package autothemer :ensure t)
-
-(straight-use-package
- '(rose-pine-emacs
-   :host github
-   :repo "thongpv87/rose-pine-emacs"
-   :branch "master"))
-;;(load-theme 'rose-pine-moon t)
-;;(setq doom-theme 'rose-pine-moon)
-
-(setq doom-font (font-spec :family "JetBrains Mono" :size 14)
-      doom-big-font (font-spec :family "JetBrains Mono" :size 20))
+(setq doom-font (font-spec :family "Source Code Pro" :size 14)
+      doom-big-font (font-spec :family "Mononoki Nerd Font" :size 20))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -31,9 +31,6 @@
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
 
-;;(setq fancy-splash-image (concat doom-private-dir "link.jpg"))
-;;(remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
-
 (setq doom-fallback-buffer "*dashboard*")
 (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 
@@ -41,14 +38,14 @@
   :init
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
-  (setq dashboard-banner-logo-title "I have spent way too much time procrastinating")
-  (setq dashboard-startup-banner 'logo)
-  ;;(setq dashboard-startup-banner "~/.doom.d/emacs-dash.png")
-  (setq dashboard-center-content nil)
-  (setq dashboard-recent-items '((recents . 5)
-                                 (agenda . 5)
-                                 (bookmarks . 5)
-                                 (projects . 5)))
+  ;;(setq dashboard-banner-logo-title "I have spent way too much time procrastinating")
+  ;;(setq dashboard-startup-banner 'logo)
+  (setq dashboard-startup-banner "~/.doom.d/emacs-dash.png")
+  (setq dashboard-center-content t)
+  (setq dashboard-recent-items '((recents . 3)
+                                 (bookmarks . 3)
+                                 (agenda . 3)
+                                 (projects . 3)))
   :config
   (dashboard-setup-startup-hook)
   (dashboard-modify-heading-icons '((recents . "file-text")
@@ -84,6 +81,9 @@
                 "DONE (d)"
                 "CANCELLED (c)"))))
 
+(after! org-roam
+  (setq org-roam-directory "~/Projects/Org/Roam"))
+
 ;;(setq centaur-tabs-set-bar 'over
 ;;      centaur-tabs-set-icons t
 ;;      centaur-tabs-gray-out-icons 'buffer
@@ -99,24 +99,24 @@
 ;;                                               (kbd "g <down>")  'centaur-tabs-forward-group
 ;;                                               (kbd "g <up>")    'centaur-tabs-backward-group)
 
-;;(setq ivy-posframe-display-functions-alist
-;;      '((swiper                     . ivy-posframe-display-at-point)
-;;        (complete-symbol            . ivy-posframe-display-at-point)
-;;        (counsel-M-x                . ivy-display-function-fallback)
-;;        (counsel-esh-history        . ivy-posframe-display-at-window-center)
-;;        (counsel-describe-function  . ivy-display-function-fallback)
-;;        (counsel-describe-variable  . ivy-display-function-fallback)
-;;        (counsel-find-file          . ivy-display-function-fallback)
-;;        (counsel-recentf            . ivy-display-function-fallback)
-;;        (counsel-register           . ivy-posframe-display-at-frame-bottom-window-center)
-;;        (nil                        . ivy-posframe-display))
-;;      ivy-posframe-height-alist
-;;      '((swiper . 20)
-;;        (t . 10)))
-;;(ivy-posframe-mode 1) ; 1 enables posframe-mode, 0 disables it.
+(setq ivy-posframe-display-functions-alist
+      '((swiper                     . ivy-posframe-display-at-point)
+        (complete-symbol            . ivy-posframe-display-at-point)
+        (counsel-M-x                . ivy-display-function-fallback)
+        (counsel-esh-history        . ivy-posframe-display-at-window-center)
+        (counsel-describe-function  . ivy-display-function-fallback)
+        (counsel-describe-variable  . ivy-display-function-fallback)
+        (counsel-find-file          . ivy-display-function-fallback)
+        (counsel-recentf            . ivy-display-function-fallback)
+        (counsel-register           . ivy-posframe-display-at-frame-bottom-window-center)
+        (nil                        . ivy-posframe-display))
+      ivy-posframe-height-alist
+      '((swiper . 20)
+        (t . 10)))
+(ivy-posframe-mode 1) ; 1 enables posframe-mode, 0 disables it.
 
-(global-set-key (kbd "M-x") 'helm-M-x)
-(helm-mode 1)
+;;(global-set-key (kbd "M-x") 'helm-M-x)
+;;(helm-mode 1)
 
 (require 'rust-mode)
 (add-hook 'rust-mode-hook #'lsp
@@ -139,3 +139,27 @@
 (define-globalized-minor-mode global-rainbow-mode rainbow-mode
   (lambda () (rainbow-mode 1)))
 (global-rainbow-mode 1)
+
+(add-hook 'org-mode-hook (lambda ()
+  "Beautify Org Checkbox Symbol"
+  (push '("[ ]" . "☐") pretiffy-symbols-alist)
+  (push '("[X]" . "☑") pretiffy-symbols-alist)
+  (push '("[-]" . "❍") pretiffy-symbols-alist)
+  ("TODO" . "")
+  ("WAIT" . "")
+  ("#+BEGIN_SRC" . "")
+  ("#+END_SRC" . "―")
+  ("SCHEDULED:" . "")
+  (pretiffy-symbols-mode)))
+
+(defun org-icons ()
+  "Beautify Org Checkbox Symbol"
+  (setq prettify-symbols-alist '("[ ]" . "☐")
+                                ("[X]" . "☑")
+                                ("[-]" . "❍")
+                                ("TODO" . "")
+                                ("WAIT" . "")
+                                ("#+BEGIN_SRC" . "")
+                                ("#+END_SRC" . "―")
+                                ("SCHEDULED:" . "")
+                                (pretiffy-symbols-mode)))
