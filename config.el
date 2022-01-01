@@ -34,22 +34,25 @@
 (setq doom-fallback-buffer "*dashboard*")
 (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 
-(use-package dashboard
-  :init
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-set-file-icons t)
-  ;;(setq dashboard-banner-logo-title "I have spent way too much time procrastinating")
-  ;;(setq dashboard-startup-banner 'logo)
-  (setq dashboard-startup-banner "~/.doom.d/emacs-dash.png")
-  (setq dashboard-center-content t)
-  (setq dashboard-recent-items '((recents . 3)
-                                 (bookmarks . 3)
-                                 (agenda . 3)
-                                 (projects . 3)))
-  :config
-  (dashboard-setup-startup-hook)
-  (dashboard-modify-heading-icons '((recents . "file-text")
-                                    (bookmarks . "book"))))
+(require 'dashboard)
+(setq dashboard-banner-logo-title "Stop procrastinating")
+(setq dashboard-startup-banner "~/.doom.d/doom-emacs-dash.png")
+;;(setq dashboard-startup-banner 'logo)
+(setq dashboard-center-content t)
+(setq dashboard-show-shortcuts nil)
+(setq dashboard-items '((bookmarks . 3)
+                        (projects . 3)
+                        (agenda . 2)
+                        (registers . 1)))
+(setq dashboard-item-names '(("Agenda for today:" . "Today's agenda")
+                             ("Agenda for the coming week:" . "Agenda:")))
+(setq dashboard-set-heading-icons t
+      dashboard-set-file-icons t)
+(dashboard-modify-heading-icons '((recents . "file-text")
+                                  (bookmarks . "book")))
+(setq dashboard-set-navigator t)
+(setq dashboard-set-init-info nil)
+(dashboard-setup-startup-hook)
 
 (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 
@@ -139,27 +142,3 @@
 (define-globalized-minor-mode global-rainbow-mode rainbow-mode
   (lambda () (rainbow-mode 1)))
 (global-rainbow-mode 1)
-
-(add-hook 'org-mode-hook (lambda ()
-  "Beautify Org Checkbox Symbol"
-  (push '("[ ]" . "☐") pretiffy-symbols-alist)
-  (push '("[X]" . "☑") pretiffy-symbols-alist)
-  (push '("[-]" . "❍") pretiffy-symbols-alist)
-  ("TODO" . "")
-  ("WAIT" . "")
-  ("#+BEGIN_SRC" . "")
-  ("#+END_SRC" . "―")
-  ("SCHEDULED:" . "")
-  (pretiffy-symbols-mode)))
-
-(defun org-icons ()
-  "Beautify Org Checkbox Symbol"
-  (setq prettify-symbols-alist '("[ ]" . "☐")
-                                ("[X]" . "☑")
-                                ("[-]" . "❍")
-                                ("TODO" . "")
-                                ("WAIT" . "")
-                                ("#+BEGIN_SRC" . "")
-                                ("#+END_SRC" . "―")
-                                ("SCHEDULED:" . "")
-                                (pretiffy-symbols-mode)))
