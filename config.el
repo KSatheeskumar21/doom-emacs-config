@@ -36,7 +36,7 @@
 
 (require 'dashboard)
 (setq dashboard-banner-logo-title "Stop procrastinating")
-(setq dashboard-startup-banner "~/.doom.d/doom-emacs-dash.png")
+(setq dashboard-startup-banner "~/.doom.d/haskell.png")
 ;;(setq dashboard-startup-banner 'logo)
 (setq dashboard-center-content t)
 (setq dashboard-show-shortcuts nil)
