@@ -26,7 +26,9 @@
 - [[#programming-languages][Programming Languages]]
   - [[#rust-mode][Rust-mode]]
   - [[#haskell-mode][Haskell-mode]]
+  - [[#go-mode][Go-mode]]
 - [[#rainbow-mode][Rainbow mode]]
+- [[#prettify-symbols][Prettify symbols]]
 
 * Name and Email
 
@@ -262,10 +264,54 @@
        :desc "Align imports" "a" #'haskell-align-imports))
 #+end_src
 
+** Go-mode
+
+#+begin_src emacs-lisp
+(use-package go-mode)
+(add-hook 'go-mode-hook 'lsp-deferred)
+#+end_src
+
 * Rainbow mode
 
 #+begin_src emacs-lisp
 (define-globalized-minor-mode global-rainbow-mode rainbow-mode
   (lambda () (rainbow-mode 1)))
 (global-rainbow-mode 1)
+#+end_src
+
+* Prettify symbols
+
+#+begin_src emacs-lisp
+;;(defun org-icons ()
+;;   "Beautify org mode keywords."
+;;   (setq prettify-symbols-alist '(("TODO" . "")
+;;	                          ("WAIT" . "")
+;;   				  ("NOPE" . "")
+;;				  ("DONE" . "")
+;;				  ("[#A]" . "")
+;;				  ("[#B]" . "")
+;; 				  ("[#C]" . "")
+;;				  ("[ ]" . "")
+;;				  ("[X]" . "")
+;;				  ("[-]" . "")
+;;				  ("#+BEGIN_SRC" . "")
+;;				  ("#+END_SRC" . "―")
+;;				  (":PROPERTIES:" . "")
+;;				  (":END:" . "―")
+;;				  ("#+STARTUP:" . "")
+;;				  ("#+TITLE: " . "")
+;;				  ("#+RESULTS:" . "")
+;;				  ("#+NAME:" . "")
+;;				  ("#+ROAM_TAGS:" . "")
+;;				  ("#+FILETAGS:" . "")
+;;				  ("#+HTML_HEAD:" . "")
+;;				  ("#+SUBTITLE:" . "")
+;;				  ("#+AUTHOR:" . "")
+;;				  (":Effort:" . "")
+;;				  ("SCHEDULED:" . "")
+;;				  ("DEADLINE:" . "")
+;;				  ("lambda" . "λ")))
+;;   (prettify-symbols-mode))
+
+;;(add-hook 'org-mode-hook 'org-icons)
 #+end_src

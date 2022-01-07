@@ -139,6 +139,42 @@
        :desc "Sort imports" "s" #'haskell-sort-imports
        :desc "Align imports" "a" #'haskell-align-imports))
 
+(use-package go-mode)
+(add-hook 'go-mode-hook 'lsp-deferred)
+
 (define-globalized-minor-mode global-rainbow-mode rainbow-mode
   (lambda () (rainbow-mode 1)))
 (global-rainbow-mode 1)
+
+;;(defun org-icons ()
+;;   "Beautify org mode keywords."
+;;   (setq prettify-symbols-alist '(("TODO" . "")
+;;	                          ("WAIT" . "")
+;;   				  ("NOPE" . "")
+;;				  ("DONE" . "")
+;;				  ("[#A]" . "")
+;;				  ("[#B]" . "")
+;; 				  ("[#C]" . "")
+;;				  ("[ ]" . "")
+;;				  ("[X]" . "")
+;;				  ("[-]" . "")
+;;				  ("#+BEGIN_SRC" . "")
+;;				  ("#+END_SRC" . "―")
+;;				  (":PROPERTIES:" . "")
+;;				  (":END:" . "―")
+;;				  ("#+STARTUP:" . "")
+;;				  ("#+TITLE: " . "")
+;;				  ("#+RESULTS:" . "")
+;;				  ("#+NAME:" . "")
+;;				  ("#+ROAM_TAGS:" . "")
+;;				  ("#+FILETAGS:" . "")
+;;				  ("#+HTML_HEAD:" . "")
+;;				  ("#+SUBTITLE:" . "")
+;;				  ("#+AUTHOR:" . "")
+;;				  (":Effort:" . "")
+;;				  ("SCHEDULED:" . "")
+;;				  ("DEADLINE:" . "")
+;;				  ("lambda" . "λ")))
+;;   (prettify-symbols-mode))
+
+;;(add-hook 'org-mode-hook 'org-icons)
